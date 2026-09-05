@@ -1,0 +1,27 @@
+title: "The Breakpoint"
+description: "Reflexões enquanto tudo continua rodando"
+
+url: ""
+baseurl: ""
+
+author:
+  name: "Marcos"
+
+markdown: kramdown
+
+permalink: /posts/:title/
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+collections:
+  posts:
+    output: true
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"

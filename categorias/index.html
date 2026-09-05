@@ -1,0 +1,78 @@
+---
+layout: default
+title: "Categorias"
+---
+
+<section class="categories-page">
+
+  <div class="container">
+
+    <header class="page-header">
+
+      <p class="eyebrow">
+        EXPLORAR
+      </p>
+
+      <h1>
+        Categorias
+      </h1>
+
+      <p>
+        Textos organizados por assunto.
+      </p>
+
+    </header>
+
+    <div class="categories-list">
+
+      {% for category in site.categories %}
+
+        {% assign category_name = category[0] %}
+        {% assign posts = category[1] %}
+
+        {% for page in site.pages %}
+
+          {% if page.category == category_name %}
+
+            <a
+              href="{{ page.url | relative_url }}"
+              class="category-card"
+            >
+
+              <div>
+
+                <span class="category-name">
+                  {{ category_name }}
+                </span>
+
+                <span class="category-count">
+
+                  {{ posts.size }}
+
+                  {% if posts.size == 1 %}
+                    texto
+                  {% else %}
+                    textos
+                  {% endif %}
+
+                </span>
+
+              </div>
+
+              <span class="category-arrow">
+                →
+              </span>
+
+            </a>
+
+          {% endif %}
+
+        {% endfor %}
+
+      {% endfor %}
+
+    </div>
+
+  </div>
+
+</section>

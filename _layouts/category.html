@@ -1,0 +1,89 @@
+---
+layout: default
+---
+
+<section class="category-page">
+
+  <div class="container">
+
+    <header class="page-header">
+
+      <p class="eyebrow">
+        CATEGORIA
+      </p>
+
+      <h1>
+        {{ page.title }}
+      </h1>
+
+      <p>
+        Textos sobre {{ page.title | downcase }}.
+      </p>
+
+    </header>
+
+    <div class="posts-list">
+
+      {% assign category_posts = site.categories[page.category] %}
+
+      {% for post in category_posts %}
+
+        <article class="post-list-item">
+
+          {% if post.image %}
+
+            <a href="{{ post.url | relative_url }}">
+
+              <img
+                src="{{ post.image | relative_url }}"
+                alt="{{ post.title }}"
+              >
+
+            </a>
+
+          {% endif %}
+
+          <div class="post-list-content">
+
+            <span class="post-category">
+              {{ post.categories | first }}
+            </span>
+
+            <h2>
+
+              <a href="{{ post.url | relative_url }}">
+                {{ post.title }}
+              </a>
+
+            </h2>
+
+            <p>
+              {{ post.excerpt | strip_html | truncate: 180 }}
+            </p>
+
+            <div class="post-meta">
+
+              <span>
+                {{ post.date | date: "%d/%m/%Y" }}
+              </span>
+
+              <span>·</span>
+
+              <span>
+                {{ post.content | number_of_words | divided_by: 200 | plus: 1 }}
+                min de leitura
+              </span>
+
+            </div>
+
+          </div>
+
+        </article>
+
+      {% endfor %}
+
+    </div>
+
+  </div>
+
+</section>
